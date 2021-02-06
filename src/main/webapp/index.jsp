@@ -8,6 +8,7 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<a href="getOutdoorUsers">Get Outdoor Users</a>
+<a href="getAllUsers">Get All Users</a>
 </body>
 </html>
