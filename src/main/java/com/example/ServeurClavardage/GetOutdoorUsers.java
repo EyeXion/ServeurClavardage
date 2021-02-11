@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+import app.insa.clav.Core.Utilisateurs;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

@@ -1,5 +1,7 @@
 package com.example.ServeurClavardage;
 
+import app.insa.clav.Core.Utilisateurs;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

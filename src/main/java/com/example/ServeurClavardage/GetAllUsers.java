@@ -1,15 +1,16 @@
 package com.example.ServeurClavardage;
 
-import java.io.*;
-import java.net.InetAddress;
-import java.util.ArrayList;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
-
-import com.example.ServeurClavardage.Messages.MessagePseudo;
+import app.insa.clav.Core.Utilisateurs;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 @WebServlet(name = "getAllUsers", value = "/getAllUsers")
 public class GetAllUsers extends HttpServlet {
