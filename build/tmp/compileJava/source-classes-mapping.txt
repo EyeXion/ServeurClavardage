@@ -1,20 +1,42 @@
-app/insa/clav/Messages/MessagePseudo.java
- app.insa.clav.Messages.MessagePseudo
-app/insa/clav/Messages/Message.java
- app.insa.clav.Messages.Message
-com/example/ServeurClavardage/GetAllUsers.java
- com.example.ServeurClavardage.GetAllUsers
-com/example/ServeurClavardage/GetOutdoorUsers.java
- com.example.ServeurClavardage.GetOutdoorUsers
+com/example/ServeurClavardage/ListMessageTxtParUser.java
+ com.example.ServeurClavardage.ListMessageTxtParUser
 com/example/ServeurClavardage/SubmitDeconnectionIndoor.java
  com.example.ServeurClavardage.SubmitDeconnectionIndoor
+com/example/ServeurClavardage/ListMessagesInitParUser.java
+ com.example.ServeurClavardage.ListMessagesInitParUser
+com/example/ServeurClavardage/GetOutdoorUsers.java
+ com.example.ServeurClavardage.GetOutdoorUsers
+app/insa/clav/Messages/MessageInit.java
+ app.insa.clav.Messages.MessageInit
+com/example/ServeurClavardage/ListMessageTxtParCo.java
+ com.example.ServeurClavardage.ListMessageTxtParCo
+app/insa/clav/Messages/MessageSrvTCP.java
+ app.insa.clav.Messages.MessageSrvTCP
+app/insa/clav/Messages/MessagePseudo.java
+ app.insa.clav.Messages.MessagePseudo
+app/insa/clav/Messages/MessageChatFile.java
+ app.insa.clav.Messages.MessageChatFile
 com/example/ServeurClavardage/SubmitConnectionOutdoor.java
  com.example.ServeurClavardage.SubmitConnectionOutdoor
 com/example/ServeurClavardage/SubmitDeconnectionOutdoor.java
  com.example.ServeurClavardage.SubmitDeconnectionOutdoor
+com/example/ServeurClavardage/SubmitMessageChat.java
+ com.example.ServeurClavardage.SubmitMessageChat
 com/example/ServeurClavardage/SharedInformation.java
  com.example.ServeurClavardage.SharedInformation
+app/insa/clav/Messages/Message.java
+ app.insa.clav.Messages.Message
+com/example/ServeurClavardage/GetConnectionChat.java
+ com.example.ServeurClavardage.GetConnectionChat
+com/example/ServeurClavardage/GetAllUsers.java
+ com.example.ServeurClavardage.GetAllUsers
 com/example/ServeurClavardage/SubmitConnectionIndoor.java
  com.example.ServeurClavardage.SubmitConnectionIndoor
+com/example/ServeurClavardage/SubmitConnectionChat.java
+ com.example.ServeurClavardage.SubmitConnectionChat
 app/insa/clav/Core/Utilisateurs.java
  app.insa.clav.Core.Utilisateurs
+com/example/ServeurClavardage/GetMessageChat.java
+ com.example.ServeurClavardage.GetMessageChat
+app/insa/clav/Messages/MessageChatTxt.java
+ app.insa.clav.Messages.MessageChatTxt
