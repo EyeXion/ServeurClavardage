@@ -36,6 +36,7 @@ public class Message implements Serializable {
     /**
      * Constructeur d'un message depuis un autre
      * @param msg
+     *          création d'un message a partir d'un autre
      */
     public Message(Message msg){
         this.typeMessage = msg.typeMessage;

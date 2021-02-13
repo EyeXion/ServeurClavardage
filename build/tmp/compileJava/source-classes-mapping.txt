@@ -1,3 +1,21 @@
+app/insa/clav/Messages/Message.java
+ app.insa.clav.Messages.Message
+app/insa/clav/Messages/MessageSrvTCP.java
+ app.insa.clav.Messages.MessageSrvTCP
+app/insa/clav/Messages/MessageChatTxt.java
+ app.insa.clav.Messages.MessageChatTxt
+app/insa/clav/Messages/MessageRetourSrvTCP.java
+ app.insa.clav.Messages.MessageRetourSrvTCP
+com/example/ServeurClavardage/Support/Connexion.java
+ com.example.ServeurClavardage.Support.Connexion
+app/insa/clav/Messages/MessageInit.java
+ app.insa.clav.Messages.MessageInit
+com/example/ServeurClavardage/Support/ListMessageTxtParCo.java
+ com.example.ServeurClavardage.Support.ListMessageTxtParCo
+app/insa/clav/Messages/MessagePseudo.java
+ app.insa.clav.Messages.MessagePseudo
+app/insa/clav/Messages/MessageChatFile.java
+ app.insa.clav.Messages.MessageChatFile
 com/example/ServeurClavardage/Request/GetConnectionChat.java
  com.example.ServeurClavardage.Request.GetConnectionChat
 com/example/ServeurClavardage/Request/SubmitDeconnectionIndoor.java
@@ -8,24 +26,12 @@ com/example/ServeurClavardage/Request/SubmitConnectionIndoor.java
  com.example.ServeurClavardage.Request.SubmitConnectionIndoor
 com/example/ServeurClavardage/Support/ListMessageTxtParUser.java
  com.example.ServeurClavardage.Support.ListMessageTxtParUser
-com/example/ServeurClavardage/Support/ListMessageTxtParCo.java
- com.example.ServeurClavardage.Support.ListMessageTxtParCo
 com/example/ServeurClavardage/Request/GetOutdoorUsers.java
  com.example.ServeurClavardage.Request.GetOutdoorUsers
 com/example/ServeurClavardage/Request/SubmitConnectionOutdoor.java
  com.example.ServeurClavardage.Request.SubmitConnectionOutdoor
 com/example/ServeurClavardage/Support/SharedInformation.java
  com.example.ServeurClavardage.Support.SharedInformation
-app/insa/clav/Messages/MessageInit.java
- app.insa.clav.Messages.MessageInit
-app/insa/clav/Messages/MessageSrvTCP.java
- app.insa.clav.Messages.MessageSrvTCP
-app/insa/clav/Messages/MessagePseudo.java
- app.insa.clav.Messages.MessagePseudo
-app/insa/clav/Messages/MessageChatFile.java
- app.insa.clav.Messages.MessageChatFile
-app/insa/clav/Messages/Message.java
- app.insa.clav.Messages.Message
 com/example/ServeurClavardage/Request/SubmitDeconnectionOutdoor.java
  com.example.ServeurClavardage.Request.SubmitDeconnectionOutdoor
 com/example/ServeurClavardage/Request/SubmitConnectionChat.java
@@ -38,7 +44,3 @@ com/example/ServeurClavardage/Support/ListMessagesInitParUser.java
  com.example.ServeurClavardage.Support.ListMessagesInitParUser
 app/insa/clav/Core/Utilisateurs.java
  app.insa.clav.Core.Utilisateurs
-app/insa/clav/Messages/MessageRetourSrvTCP.java
- app.insa.clav.Messages.MessageRetourSrvTCP
-app/insa/clav/Messages/MessageChatTxt.java
- app.insa.clav.Messages.MessageChatTxt

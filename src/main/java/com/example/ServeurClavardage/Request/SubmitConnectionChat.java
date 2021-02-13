@@ -2,6 +2,7 @@ package com.example.ServeurClavardage.Request;
 
 import app.insa.clav.Messages.MessageInit;
 import app.insa.clav.Messages.MessageSrvTCP;
+import com.example.ServeurClavardage.Support.Connexion;
 import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,7 +40,11 @@ public class SubmitConnectionChat extends HttpServlet {
         MessageSrvTCP msgSrv = gson.fromJson(resp.toString(), MessageSrvTCP.class);
         response.setContentType("application/json");
         System.out.println("Submit connection Chat avec " + msgSrv);
-        this.sh.addMsgInit(msgSrv.getUserId(),msgSrv.getId(), msgSrv.getMessageInit());
+        if (this.sh.existConnexion(new Connexion(msgSrv.getUserId(), msgSrv.getId())))  {
+            response.setStatus(201);
+        } else {
+            this.sh.addMsgInit(msgSrv.getUserId(), msgSrv.getId(), msgSrv.getMessageInit());
+        }
         //System.out.println("Etat après le dépot de connexion : " + this.sh.getCoList(msgSrv.getUserId()));
     }
 

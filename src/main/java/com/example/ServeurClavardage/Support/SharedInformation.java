@@ -14,6 +14,7 @@ public class SharedInformation {
     private ArrayList<Utilisateurs> indoorUsersList;
     private ArrayList<ListMessagesInitParUser> listMsgInit;
     private ArrayList<ListMessageTxtParUser> listMessageTxt;
+    private ArrayList<Connexion> connexions;
     private static SharedInformation instance = null;
 
     public SharedInformation(){
@@ -21,6 +22,7 @@ public class SharedInformation {
         this.indoorUsersList = new ArrayList<>();
         this.listMsgInit = new ArrayList<>();
         this.listMessageTxt = new ArrayList<>();
+        this.connexions = new ArrayList<>();
     }
 
     public static SharedInformation getInstance(){
@@ -121,6 +123,7 @@ public class SharedInformation {
     }
 
     public synchronized void addMsgInit(int user, int remoteId, MessageInit msg){
+        this.addConnexion(new Connexion(user, remoteId));
         for (Iterator<ListMessagesInitParUser> iter = listMsgInit.iterator(); iter.hasNext(); ) {
             ListMessagesInitParUser list = iter.next();
             if (user == list.getUser().getId()) {
@@ -135,6 +138,9 @@ public class SharedInformation {
     }
 
     public synchronized void addMsgTxt(int user, int remoteId, MessageRetourSrvTCP msg) {
+        if (msg.getMessage() != null) {
+            this.removeConnexion(user, remoteId);
+        }
         for (Iterator<ListMessageTxtParUser> iter1 = listMessageTxt.iterator(); iter1.hasNext(); ) {
             ListMessageTxtParUser list1 = iter1.next();
             if (list1.getUser().getId() == user) {
@@ -167,10 +173,54 @@ public class SharedInformation {
 
     public synchronized void removeIndoorUser(Utilisateurs user){
         this.indoorUsersList.remove(user);
+        this.handleDeconnexion(user.getId());
     }
 
     public synchronized void removeOutdoorUser(Utilisateurs user){
         this.outdoorUsersList.remove(user);
+        this.handleDeconnexion(user.getId());
+    }
+
+    private void addConnexion(Connexion con) {
+        this.connexions.add(con);
+    }
+
+    private void removeConnexion(int id1, int id2) {
+        Connexion c = null;
+        for (Iterator<Connexion> iter = this.connexions.iterator(); iter.hasNext();) {
+            c = iter.next();
+            if ((c.getId1() == id1 && c.getId2() == id2) || (c.getId1() == id2 && c.getId2() == id1)) {
+                break;
+            }
+        }
+        if (c != null) {
+            this.connexions.remove(c);
+        }
+    }
+
+    private void handleDeconnexion(int user) {
+        for (Iterator<Connexion> iter = this.connexions.iterator(); iter.hasNext();) {
+            Connexion c = iter.next();
+            if (user == c.getId1()) {
+                this.addMsgTxt(c.getId2(), user, new MessageRetourSrvTCP(new Message(8, null)));
+                this.removeConnexion(user, c.getId2());
+            }
+            if (user == c.getId2()) {
+                this.addMsgTxt(c.getId1(), user, new MessageRetourSrvTCP(new Message(8, null)));
+                this.removeConnexion(user, c.getId1());
+            }
+        }
+    }
+    public synchronized boolean existConnexion(Connexion con) {
+        boolean trouve = false;
+        for (Iterator<Connexion> iter = this.connexions.iterator(); iter.hasNext();) {
+            Connexion c = iter.next();
+            if (c.equals(con)) {
+                trouve = true;
+                break;
+            }
+        }
+        return trouve;
     }
 
     private void printLists() {
