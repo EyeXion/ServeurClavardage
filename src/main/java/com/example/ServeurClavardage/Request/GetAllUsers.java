@@ -1,6 +1,7 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Request;
 
 import app.insa.clav.Core.Utilisateurs;
+import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -29,6 +30,7 @@ public class GetAllUsers extends HttpServlet {
         ArrayList<Utilisateurs> users = new ArrayList<>(this.sh.getOutdoorUsersList());
         users.addAll(this.sh.getIndoorUsersList());
         String param = gson.toJson(users);
+        //System.out.println("Demande des utilisateurs présents : renvoyé -> " + users);
         PrintWriter out = response.getWriter();
         out.print(param);
     }

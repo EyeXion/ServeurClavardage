@@ -1,7 +1,9 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Request;
 
 import app.insa.clav.Messages.Message;
+import app.insa.clav.Messages.MessageRetourSrvTCP;
 import app.insa.clav.Messages.MessageSrvTCP;
+import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -35,11 +37,11 @@ public class GetMessageChat extends HttpServlet {
             while ((responseLine = br.readLine()) != null) {
                 resp.append(responseLine.trim());
             }
-            System.out.println(resp.toString());
         }
         MessageSrvTCP msgSrv = gson.fromJson(resp.toString(), MessageSrvTCP.class);
         response.setContentType("application/json");
-        Message msgs = this.sh.getMessageList(msgSrv.getUserId(), msgSrv.getId());
+        MessageRetourSrvTCP msgs = this.sh.getMessageList(msgSrv.getUserId(), msgSrv.getId());
+        //System.out.println("Demande des messages avec " + msgSrv + " : renvoyé -> " + msgs);
         String param = gson.toJson(msgs);
         PrintWriter out = response.getWriter();
         out.print(param);

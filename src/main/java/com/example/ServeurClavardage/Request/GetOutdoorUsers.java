@@ -1,12 +1,12 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Request;
 
 import java.io.*;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 import app.insa.clav.Core.Utilisateurs;
+import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -26,6 +26,7 @@ public class GetOutdoorUsers extends HttpServlet {
         final GsonBuilder builder = new GsonBuilder();
         final Gson gson = builder.create();
         ArrayList<Utilisateurs> outdoorArrayList = this.sh.getOutdoorUsersList();
+        //System.out.println("Demande des outdoorUser : renvoyé -> " + outdoorArrayList);
         String param = gson.toJson(outdoorArrayList);
         PrintWriter out = response.getWriter();
         out.print(param);

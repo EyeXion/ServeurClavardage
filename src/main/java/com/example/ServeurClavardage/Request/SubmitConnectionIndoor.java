@@ -1,22 +1,18 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Request;
 
 import java.io.*;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 import app.insa.clav.Core.Utilisateurs;
-import app.insa.clav.Messages.MessagePseudo;
+import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 
-@WebServlet(name = "submitConnectionOutdoor", value = "/submitConnectionOutdoor")
-public class SubmitConnectionOutdoor extends HttpServlet {
+@WebServlet(name = "submitConnectionIndoor", value = "/submitConnectionIndoor")
+public class SubmitConnectionIndoor extends HttpServlet {
     private String message;
     private SharedInformation sh;
 
@@ -35,12 +31,11 @@ public class SubmitConnectionOutdoor extends HttpServlet {
             while ((responseLine = br.readLine()) != null) {
                 resp.append(responseLine.trim());
             }
-            System.out.println(resp.toString());
         }
         Utilisateurs newUser = gson.fromJson(resp.toString(), Utilisateurs.class);
+        //System.out.println("Submit connection Indoor avec " + newUser);
         newUser.update();
-        this.sh.addOutdoorUser(newUser);
-
+        this.sh.addIndoorUser(newUser);
     }
 
     public void destroy() {

@@ -1,7 +1,8 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Request;
 
 import app.insa.clav.Messages.MessageInit;
 import app.insa.clav.Messages.MessageSrvTCP;
+import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -12,17 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
-@WebServlet(name = "GetConnectionChat", value = "/GetConnectionChat")
-public class GetConnectionChat extends HttpServlet {
+@WebServlet(name = "SubmitConnectionChat", value = "/SubmitConnectionChat")
+public class SubmitConnectionChat extends HttpServlet {
     private String message;
     private SharedInformation sh;
 
     public void init() {
-        message = "Récupération des chat connexion";
+        message = "Ajout d'une co";
         this.sh = SharedInformation.getInstance();
     }
 
@@ -30,22 +29,21 @@ public class GetConnectionChat extends HttpServlet {
         final GsonBuilder builder = new GsonBuilder();
         final Gson gson = builder.create();
         StringBuilder resp = new StringBuilder();
-        try(BufferedReader br = new BufferedReader(
+        try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(request.getInputStream(), StandardCharsets.UTF_8))) {
             String responseLine = null;
             while ((responseLine = br.readLine()) != null) {
                 resp.append(responseLine.trim());
             }
-            System.out.println(resp.toString());
         }
         MessageSrvTCP msgSrv = gson.fromJson(resp.toString(), MessageSrvTCP.class);
         response.setContentType("application/json");
-        ArrayList<MessageInit> msgs = this.sh.getCoList(msgSrv.getUserId());
-        String param = gson.toJson(msgs);
-        PrintWriter out = response.getWriter();
-        out.print(param);
+        System.out.println("Submit connection Chat avec " + msgSrv);
+        this.sh.addMsgInit(msgSrv.getUserId(),msgSrv.getId(), msgSrv.getMessageInit());
+        //System.out.println("Etat après le dépot de connexion : " + this.sh.getCoList(msgSrv.getUserId()));
     }
 
     public void destroy() {
     }
 }
+

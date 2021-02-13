@@ -1,19 +1,18 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Request;
 
 import java.io.*;
-import java.net.*;
 import java.nio.charset.StandardCharsets;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 import app.insa.clav.Core.Utilisateurs;
-import app.insa.clav.Messages.MessagePseudo;
+import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 
-@WebServlet(name = "submitDeconnectionIndoor", value = "/submitDeconnectionIndoor")
-public class SubmitDeconnectionIndoor extends HttpServlet {
+@WebServlet(name = "submitConnectionOutdoor", value = "/submitConnectionOutdoor")
+public class SubmitConnectionOutdoor extends HttpServlet {
     private String message;
     private SharedInformation sh;
 
@@ -32,11 +31,12 @@ public class SubmitDeconnectionIndoor extends HttpServlet {
             while ((responseLine = br.readLine()) != null) {
                 resp.append(responseLine.trim());
             }
-            System.out.println(resp.toString());
         }
-        Utilisateurs disconnectedUser = gson.fromJson(resp.toString(), Utilisateurs.class);
-        this.sh.removeIndoorUser(disconnectedUser);
-        System.out.println(disconnectedUser);
+        Utilisateurs newUser = gson.fromJson(resp.toString(), Utilisateurs.class);
+        //System.out.println("Submit connection outdoor avec " + newUser);
+        newUser.update();
+        this.sh.addOutdoorUser(newUser);
+
     }
 
     public void destroy() {

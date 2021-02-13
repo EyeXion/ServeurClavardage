@@ -1,6 +1,7 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Request;
 
 import app.insa.clav.Messages.MessageSrvTCP;
+import com.example.ServeurClavardage.Support.SharedInformation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -33,11 +34,11 @@ public class SubmitMessageChat extends HttpServlet {
             while ((responseLine = br.readLine()) != null) {
                 resp.append(responseLine.trim());
             }
-            System.out.println(resp.toString());
         }
         MessageSrvTCP msgSrv = gson.fromJson(resp.toString(), MessageSrvTCP.class);
         response.setContentType("application/json");
-        this.sh.addMsgTxt(msgSrv.getUserId(), msgSrv.getId(), msgSrv.getMessage());
+        System.out.println("Submit message chat avec " + msgSrv);
+        this.sh.addMsgTxt(msgSrv.getUserId(), msgSrv.getId(), msgSrv.getMessageRetourSrvTCP());
     }
 
     public void destroy() {

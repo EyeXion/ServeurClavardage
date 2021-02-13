@@ -1,4 +1,4 @@
-package com.example.ServeurClavardage;
+package com.example.ServeurClavardage.Support;
 
 import app.insa.clav.Core.Utilisateurs;
 import app.insa.clav.Messages.MessageInit;
