@@ -1,9 +1,9 @@
-#Servlet pour l'application JigglyPuff Messenger (Paul Faure et Elies Tali)
+# Servlet pour l'application JigglyPuff Messenger (Paul Faure et Elies Tali)
 
 Bienvenue dans le repo contenant le projet servlet pour JigglyPuff Messenger. Pour télécharger le manuel, l'application et les autres fichiers utiles, rendez-vous sur https://etud.insa-toulouse.fr/~tali/DownloadPageJigglyMessenger/.
     
 
-#Cloner ce repo et build le servlet
+# Cloner ce repo et build le servlet
 
 Comme pour le projet principal, le servlet est empaqueté dans un projet Gradle. Tout d'abord, clonez le repo et changez de reportoire avec
 
